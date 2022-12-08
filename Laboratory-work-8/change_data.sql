@@ -1,13 +1,13 @@
-DROP FUNCTION change_year(integer,integer);
-CREATE OR REPLACE FUNCTION change_year (id integer, year integer)
-RETURNS BOOLEAN
+DROP FUNCTION IF EXISTS change_year(integer,varchar);
+CREATE OR REPLACE FUNCTION change_model (model varchar, c_id integer)
+RETURNS varchar
 AS $$
 DECLARE
 	str VARCHAR;
 BEGIN
-	str := 'update car set year = '''|| year ||''' where c_id = '''||id||'''';
+	str := 'update car set c_id = '''||c_id ||''' where model  = '''|| model ||'''';
 	RAISE NOTICE 'Query=%',str;
 	EXECUTE str;
-	RETURN 1;
+	RETURN str;
 END;
 $$ LANGUAGE plpgsql;
