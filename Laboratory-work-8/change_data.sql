@@ -1,4 +1,3 @@
-DROP FUNCTION IF EXISTS change_year(integer,varchar);
 CREATE OR REPLACE FUNCTION change_model (model varchar, c_id integer)
 RETURNS varchar
 AS $$
